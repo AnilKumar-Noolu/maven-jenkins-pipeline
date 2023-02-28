@@ -1,7 +1,7 @@
 pipeline {
   agent any
   tools {
-        maven "Maven 3.8.6" 
+        maven "Maven 3.9.0" 
    }
 
   stages {
@@ -28,7 +28,7 @@ pipeline {
                   withSonarQubeEnv('SonarQube') {
            sh "mvn sonar:sonar \
                               -Dsonar.projectKey=maven-jenkins-pipeline \
-                        -Dsonar.host.url=http://34.173.74.192:9000" 
+                        -Dsonar.host.url=http://<public-ip-of-sonarqube-server>:9000" 
                 }
            timeout(time: 2, unit: 'MINUTES') {
                       script {
